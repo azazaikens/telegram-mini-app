@@ -1,14 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { Buffer } from "buffer";
 
-// @ts-ignore
 window.Buffer = Buffer;
 
 const TonWeb = require("tonweb");
 
 const initialState = {
   address: null,
-  addressUserFriendly: null, // Додаємо змінну для дружньої адреси
+  addressUserFriendly: null, 
 };
 
 const walletSlice = createSlice({
@@ -19,11 +18,11 @@ const walletSlice = createSlice({
       state.address = action.payload;
       state.addressUserFriendly = new TonWeb.utils.Address(
         action.payload
-      ).toString(true, true, true); // Дружня адреса
+      ).toString(true, true, true);
     },
     disconnectWallet: (state) => {
       state.address = null;
-      state.addressUserFriendly = null; // Очищаємо дружню адресу при відключенні
+      state.addressUserFriendly = null; 
     },
   },
 });
